@@ -8,7 +8,7 @@ on:
   push:
     branches: [ "feature/test_alert" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "feature/test_alert" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
           echo test, and deploy your project.
       - name: Debug SLACK_WEBHOOK_URL
         run: |
-          echo "SLACK_WEBHOOK: ${{ secrets.actual.SLACK_WEBHOOK }}"
+          echo  ${{ secrets.actual.SLACK_WEBHOOK }}
       - name: Send Slack notification
         if: success() # Only run this step if all previous steps were successful
         env:
