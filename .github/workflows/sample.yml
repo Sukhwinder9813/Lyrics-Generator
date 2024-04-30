@@ -34,10 +34,9 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: Send Slack notification
-        uses: rtCamp/action-slack-notify@v2
+        if: success() # Only run this step if all previous steps were successful
         env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-            SLACK_USERNAME: GitHub Actions
-            SLACK_MESSAGE: "Task completed successfully!"
-            SLACK_COLOR: good
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Task completed successfully!"}' $SLACK_WEBHOOK
 
