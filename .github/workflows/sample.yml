@@ -36,11 +36,11 @@ jobs:
       - name: Debug SLACK_WEBHOOK_URL
         run: |
           echo  ${{ secrets.actual.SLACK_WEBHOOK }}
-          echo  ${{ secrets.SLACK_WEBHOOK }}
+          echo  ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Send Slack notification
         if: success() # Only run this step if all previous steps were successful
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Task completed successfully!"}' $SLACK_WEBHOOK
 
