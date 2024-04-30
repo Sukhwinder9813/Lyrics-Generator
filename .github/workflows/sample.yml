@@ -34,3 +34,24 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      name: Slack Alert
+
+      on:
+        push:
+          branches:
+            - feature/test_alert
+
+      jobs:
+        send-alert:
+          runs-on: ubuntu-latest
+
+          steps:
+            - name: Send Slack notification
+              uses: rtCamp/action-slack-notify@v2
+              env:
+                SLACK_WEBHOOK: ${{ secrets.GIT_HOOK_URL }}
+                SLACK_USERNAME: GitHub Actions
+                SLACK_MESSAGE: "Task completed successfully!"
+                SLACK_COLOR: good
+
