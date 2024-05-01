@@ -38,10 +38,9 @@ jobs:
           echo  ${{ secrets.actual.SLACK_WEBHOOK }}
           echo  ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Send Slack notification
+        uses: actions/slack-github-action@v1.24.0
         if: success() # Only run this step if all previous steps were successful
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Task completed successfully!"}' $SLACK_WEBHOOK
 
 
