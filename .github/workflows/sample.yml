@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "feature/test_alert" ]
+    branches: [ "test_alert2" ]
   pull_request:
     branches: [ "feature/test_alert" ]
 
@@ -42,6 +42,6 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Task completed successfully!"}' $SLACK_WEBHOOK
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Yeah ! Task completed successfully!"}' $SLACK_WEBHOOK
 
 
