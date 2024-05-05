@@ -50,5 +50,14 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
                  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Slack Notification again
+        uses: actions/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "info":"I am new notification"
+            }
+        env:
+                 SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
