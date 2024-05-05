@@ -50,6 +50,8 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
                  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Slack Notification
+        uses: actions/checkout@v2
       - name: Slack Notification again
         uses: actions/slack-github-action@v1.24.0
         with:
